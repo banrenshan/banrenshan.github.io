@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>使用hexo搭建GitPage | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="1.环境准备   1.1 软件预装  电脑需要预装下面的软件     nodejs(&amp;gt;6.9)   Git      1.2 安装hexo   npm install -g hexo-cli       2.基本使用   2.1 创建项目   hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install     2.2 新建文章   hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hexo搭建GitPage">
+<meta property="og:url" content="http://yoursite.com/2019/08/06/hexo/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.环境准备   1.1 软件预装  电脑需要预装下面的软件     nodejs(&amp;gt;6.9)   Git      1.2 安装hexo   npm install -g hexo-cli       2.基本使用   2.1 创建项目   hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install     2.2 新建文章   hexo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-06T09:27:02.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用hexo搭建GitPage">
+<meta name="twitter:description" content="1.环境准备   1.1 软件预装  电脑需要预装下面的软件     nodejs(&amp;gt;6.9)   Git      1.2 安装hexo   npm install -g hexo-cli       2.基本使用   2.1 创建项目   hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install     2.2 新建文章   hexo">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">John Doe</h5>
+          <a href="mailto:1367508819@qq.com" title="1367508819@qq.com" class="mail">1367508819@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/banrenshan/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用hexo搭建GitPage</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header page-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用hexo搭建GitPage</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-06T09:29:02.361Z" itemprop="datePublished" class="page-time">
+  2019-08-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    <article class="page-article fade" itemprop="blogPage">
+        <div class="post-content page-content" id="page-content" itemprop="pageContent">
+            <div class="sect1">
+<h2 id="_1_环境准备">1.环境准备</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_1_软件预装">1.1 软件预装</h3>
+<div class="paragraph">
+<p>电脑需要预装下面的软件</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>nodejs(&gt;6.9)</p>
+</li>
+<li>
+<p>Git</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_安装hexo">1.2 安装hexo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">npm install -g hexo-cli</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_基本使用">2.基本使用</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_1_创建项目">2.1 创建项目</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo init &lt;folder&gt;
+cd &lt;folder&gt;
+npm install</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_新建文章">2.2 新建文章</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo new [layout] &lt;title&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"><span class="meta">$</span> hexo new "post title with whitespace"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_生成静态文件">2.3 生成静态文件</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"><span class="meta">$</span> hexo generate</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>-d, --deploy:文件生成后立即部署网站</p>
+</li>
+<li>
+<p>-w, --watch:监视文件变动</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>该命令可以简写为 <code>hexo g</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_4_发表草稿">2.4 发表草稿</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"> hexo publish [layout] &lt;filename&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_5_启动服务">2.5 启动服务</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo server</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" class="bare" target="_blank" rel="noopener">http://localhost:4000/。</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>-p, --port:重设端口</p>
+</li>
+<li>
+<p>-s, --static:只使用静态文件</p>
+</li>
+<li>
+<p>-l, --log:启动日记记录，使用覆盖记录格式</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_6_部署到git">2.6 部署到git</h3>
+<div class="paragraph">
+<p>1.安装插件</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">npm install hexo-deployer-git --save</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2.配置</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">deploy:
+  type: git
+  repo: &lt;repository url&gt; #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io (1)
+  branch: [branch] #published (2)
+  message: [message] (3)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>库（Repository）地址</p>
+</li>
+<li>
+<p>分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测。</p>
+</li>
+<li>
+<p>自定义提交信息 (默认为 Site updated: &lt;!--￼0-&#8594;)</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+这里不需要设置git用户名和密码,是因为会调用git工具,git工具是需要正确配置的用户信息的.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo deploy</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>-g, --generate:部署之前预先生成静态文件</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_7_清理">2.7 清理</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo clean</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p>
+</div>
+<div class="paragraph">
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_目录结构">3.目录结构</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">.
+├── _config.yml   #网站的配置信息
+├── package.json  #npm依赖信息
+├── scaffolds     #模版文件夹
+├── source   (1)
+|   ├── _drafts #草稿目录
+|   └── _posts #发布的文章目录
+└── themes #主题</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>存放用户资源的地方。除 <em>posts文件夹之外，</em>(下划线)开头的文件/文件夹和隐藏的文件都会被忽略。Markdown和HTML文件会被解析并放到public文件夹,其他文件则原样复制到public</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_支持asciidoctor">4.支持asciidoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>hexo 默认情况支持markdown,我比较喜欢使用asciidoctor来编写文档,需要做如下修改来开启支持:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>安装插件</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm install hexo-renderer-asciidoc --save</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_使用hexo_theme_indigo模板">5.使用hexo-theme-indigo模板</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>git地址:https://github.com/yscoder/hexo-theme-indigo/wiki</p>
+</div>
+<div class="paragraph">
+<p>1.下载模板</p>
+</div>
+<div class="paragraph">
+<p>2.初始化项目</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">hexo init &lt;folder&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>3.解压后将模板复制到&lt;folder&gt;/theme下面,修改文件名称为indigo</p>
+</div>
+<div class="paragraph">
+<p>4.安装依赖</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">npm install hexo-renderer-less --save
+npm install hexo-generator-feed --save
+npm install hexo-generator-json-content --save
+npm install hexo-helper-qrcode --save
+npm install hexo-deployer-git --save
+npm install hexo-renderer-asciidoc --save
+npm install hexo --save
+npm install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>5.修改配置</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yml" data-lang="yml"><span class="attr">theme:</span> <span class="string">indigo</span> <span class="comment">#修改主题</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+        </div>
+
+        
+        <div class="card page-about-me flex-row">
+            <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpg"></a>
+            <div class="content flex-col">
+                <p><strong>John Doe</strong></p>
+                <p><em></em></p>
+                <p>用户页面中作者相关的描述性文字，如不需要设为 false</p>
+            </div>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/06/hexo/&title=《使用hexo搭建GitPage》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/06/hexo/&title=《使用hexo搭建GitPage》 — Hexo&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/08/06/hexo/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用hexo搭建GitPage》 — Hexo&url=http://yoursite.com/2019/08/06/hexo/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/08/06/hexo/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+        
+
+        
+
+
+        
+
+    </article>
+    
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>John Doe &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/06/hexo/&title=《使用hexo搭建GitPage》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/06/hexo/&title=《使用hexo搭建GitPage》 — Hexo&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/08/06/hexo/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用hexo搭建GitPage》 — Hexo&url=http://yoursite.com/2019/08/06/hexo/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/08/06/hexo/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aQYrDMAwF0Nz/0hmY1cCQ9EuO1RaeV6GU9LkLYX/pOOJ1/q6rT+6f/67/nx87Fi4u7jL3vF1X3Hv61fbyjV1uCRcXd5CbI+4p6/QXNlxc3A/jJuUvgSbvx8XF/Rbu/aUlKVj534GLi/sJ3LwwJeWpWua23NVwcXEXuNXAdMfzxnwXFxe3yD2LKzmO5Ijyr+Pi4o5wkwZqFVS9GlUjVFxc3N3cldAzvw7lW3px0cLFxR3hVscjej+Wj2oVCisuLu42brXJkUecvWbqizKKi4s7ws0vHglipdgV2rS4uLibub3Rq8KoxHKXpDCvgYuL+xB3ZUCqd/TpBSW4uLjz3LzEVLdULZe9AxMuLu6z3JWxyN7gZi8QwcXFnedWo4reBvIwJWql4OLibuNWxyl6QUkesyZvwMXF3c1NxiMSSq/1Uh3XwMXFneQ+db2pxivlUAYXF3eQm6+nDj29DePi4s5we/FotVez0mJptmBxcXGXuUkx6kUbeSxSKHC4uLiD3OpxJD/0rAxgXea7uLi4H8NNWqH54WZ7IcPFxX0TN78I9Q43uLi47+X2istTz4Vv4uLijnDXxzHz+KN3hMLFxR3k/gApY5WMPT6b7wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

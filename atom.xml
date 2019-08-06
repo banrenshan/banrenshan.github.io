@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-08-06T09:27:02.710Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用hexo搭建GitPage</title>
+    <link href="http://yoursite.com/2019/08/06/hexo/"/>
+    <id>http://yoursite.com/2019/08/06/hexo/</id>
+    <published>2019-08-06T09:29:02.361Z</published>
+    <updated>2019-08-06T09:27:02.710Z</updated>
+    
+    <content type="html"><![CDATA[<div class="sect1"><h2 id="_1_环境准备">1.环境准备</h2><div class="sectionbody"><div class="sect2"><h3 id="_1_1_软件预装">1.1 软件预装</h3><div class="paragraph"><p>电脑需要预装下面的软件</p></div><div class="olist arabic"><ol class="arabic"><li><p>nodejs(&gt;6.9)</p></li><li><p>Git</p></li></ol></div></div><div class="sect2"><h3 id="_1_2_安装hexo">1.2 安装hexo</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">npm install -g hexo-cli</code></pre></div></div></div></div></div><div class="sect1"><h2 id="_2_基本使用">2.基本使用</h2><div class="sectionbody"><div class="sect2"><h3 id="_2_1_创建项目">2.1 创建项目</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo init &lt;folder&gt;cd &lt;folder&gt;npm install</code></pre></div></div></div><div class="sect2"><h3 id="_2_2_新建文章">2.2 新建文章</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo new [layout] &lt;title&gt;</code></pre></div></div><div class="paragraph"><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell"><span class="meta">$</span> hexo new "post title with whitespace"</code></pre></div></div></div><div class="sect2"><h3 id="_2_3_生成静态文件">2.3 生成静态文件</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell"><span class="meta">$</span> hexo generate</code></pre></div></div><div class="olist arabic"><ol class="arabic"><li><p>-d, --deploy:文件生成后立即部署网站</p></li><li><p>-w, --watch:监视文件变动</p></li></ol></div><div class="paragraph"><p>该命令可以简写为 <code>hexo g</code></p></div></div><div class="sect2"><h3 id="_2_4_发表草稿">2.4 发表草稿</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell"> hexo publish [layout] &lt;filename&gt;</code></pre></div></div></div><div class="sect2"><h3 id="_2_5_启动服务">2.5 启动服务</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo server</code></pre></div></div><div class="paragraph"><p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" class="bare" target="_blank" rel="noopener">http://localhost:4000/。</a></p></div><div class="olist arabic"><ol class="arabic"><li><p>-p, --port:重设端口</p></li><li><p>-s, --static:只使用静态文件</p></li><li><p>-l, --log:启动日记记录，使用覆盖记录格式</p></li></ol></div></div><div class="sect2"><h3 id="_2_6_部署到git">2.6 部署到git</h3><div class="paragraph"><p>1.安装插件</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">npm install hexo-deployer-git --save</code></pre></div></div><div class="paragraph"><p>2.配置</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">deploy:  type: git  repo: &lt;repository url&gt; #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io (1)  branch: [branch] #published (2)  message: [message] (3)</code></pre></div></div><div class="colist arabic"><ol><li><p>库（Repository）地址</p></li><li><p>分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测。</p></li><li><p>自定义提交信息 (默认为 Site updated: &lt;!--￼0-&#8594;)</p></li></ol></div><div class="admonitionblock note"><table><tr><td class="icon"><div class="title">Note</div></td><td class="content">这里不需要设置git用户名和密码,是因为会调用git工具,git工具是需要正确配置的用户信息的.</td></tr></table></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo deploy</code></pre></div></div><div class="olist arabic"><ol class="arabic"><li><p>-g, --generate:部署之前预先生成静态文件</p></li></ol></div></div><div class="sect2"><h3 id="_2_7_清理">2.7 清理</h3><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo clean</code></pre></div></div><div class="paragraph"><p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p></div><div class="paragraph"><p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p></div></div></div></div><div class="sect1"><h2 id="_3_目录结构">3.目录结构</h2><div class="sectionbody"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">.├── _config.yml   #网站的配置信息├── package.json  #npm依赖信息├── scaffolds     #模版文件夹├── source   (1)|   ├── _drafts #草稿目录|   └── _posts #发布的文章目录└── themes #主题</code></pre></div></div><div class="colist arabic"><ol><li><p>存放用户资源的地方。除 <em>posts文件夹之外，</em>(下划线)开头的文件/文件夹和隐藏的文件都会被忽略。Markdown和HTML文件会被解析并放到public文件夹,其他文件则原样复制到public</p></li></ol></div></div></div><div class="sect1"><h2 id="_4_支持asciidoctor">4.支持asciidoctor</h2><div class="sectionbody"><div class="paragraph"><p>hexo 默认情况支持markdown,我比较喜欢使用asciidoctor来编写文档,需要做如下修改来开启支持:</p></div><div class="olist arabic"><ol class="arabic"><li><p>安装插件</p></li></ol></div><div class="listingblock"><div class="content"><pre>npm install hexo-renderer-asciidoc --save</pre></div></div></div></div><div class="sect1"><h2 id="_5_使用hexo_theme_indigo模板">5.使用hexo-theme-indigo模板</h2><div class="sectionbody"><div class="paragraph"><p>git地址:https://github.com/yscoder/hexo-theme-indigo/wiki</p></div><div class="paragraph"><p>1.下载模板</p></div><div class="paragraph"><p>2.初始化项目</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">hexo init &lt;folder&gt;</code></pre></div></div><div class="paragraph"><p>3.解压后将模板复制到&lt;folder&gt;/theme下面,修改文件名称为indigo</p></div><div class="paragraph"><p>4.安装依赖</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">npm install hexo-renderer-less --savenpm install hexo-generator-feed --savenpm install hexo-generator-json-content --savenpm install hexo-helper-qrcode --savenpm install hexo-deployer-git --savenpm install hexo-renderer-asciidoc --savenpm install hexo --savenpm install</code></pre></div></div><div class="paragraph"><p>5.修改配置</p></div><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-yml" data-lang="yml"><span class="attr">theme:</span> <span class="string">indigo</span> <span class="comment">#修改主题</span></code></pre></div></div></div></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;_1_环境准备&quot;&gt;1.环境准备&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;_1_1_软件预装&quot;&gt;1.1 软件预装&lt;/h3&gt;
+&lt;div class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
