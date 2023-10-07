@@ -56,7 +56,6 @@ jobs:
         with:
           source-repo: "git@github.com:banrenshan/banrenshan.github.io.git"
           destination-repo: "git@gitee.com:hanziqi/hanziqi.git"
-
   reload-pages:
     needs: sync
     runs-on: ubuntu-latest
