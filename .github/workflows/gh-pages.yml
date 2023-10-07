@@ -47,14 +47,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      - name: Deploy  Gitee
-        uses: peaceiris/actions-gh-pages@v3
+  sync: #同步到gitee仓库
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
-          deploy_key: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-          publish_dir: ./public
+          source-repo: "git@github.com:banrenshan/banrenshan.github.io.git"
+          destination-repo: "git@gitee.com:hanziqi/hanziqi.git"
 
   reload-pages:
-    needs: build-and-deploy
+    needs: sync
     runs-on: ubuntu-latest
     steps:
       - name: Build Gitee Pages
