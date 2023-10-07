@@ -54,7 +54,7 @@ jobs:
           publish_dir: ./public
 
   reload-pages:
-    needs: sync
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Build Gitee Pages
