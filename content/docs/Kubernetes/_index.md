@@ -1,4 +1,0 @@
----
-title: Kubernetes
-linkTitleIcon: <i class="fas fa-book fa-fw"></i>
----
