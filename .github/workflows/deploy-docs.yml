@@ -1,107 +1,40 @@
-# 工作流名称
-name: Deploy blog to Github Pages
 
-# 用于描述工作流的何时触发
+name: 部署GitHub Pages
 on:
-  workflow_dispatch: {}
   push:
-    branches: [main]
-
-# 设置GITHUB_TOKEN的权限
+    branches:
+      - main
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-# 工作流里的任务
 jobs:
-  # 构建
-  build:
-    # 指定该任务运行的系统，目前可选的有 ubuntu、windows、和 macOS
+  build-and-deploy:
     runs-on: ubuntu-latest
-    # 任务里的运行步骤
     steps:
-      # 代码检出
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: 下载代码
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      # 安装 Node.js
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
-      # 配置 github pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      # 安装 pnpm
-      - name: Install pnpm
+      - name: 设置 pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          run_install: false
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      # 安装依赖
-      - name: Install dependencies
-        run: pnpm install
-      # 打包
-      - name: Build with VitePress
+          node-version: 20
+          cache: pnpm
+      - name: 安装依赖
         run: |
-          pnpm build
-          touch docs/.vitepress/dist/.nojekyll
-      # 上传到 Github Pages 部署环境
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: docs/.vitepress/dist
-  # 部署到GitHubPages
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # 部署 GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-
-
-
-  gitee-sync:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # 同步代码到 gitee
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@v1.2.0
+          corepack enable
+          pnpm install --frozen-lockfile
+      - name: 构建文档
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          pnpm run docs:build
+          > src/.vuepress/dist/.nojekyll
+      - name: 部署文档github
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          source-repo: git@github.com:banrenshan/banrenshan.github.io.git
-          destination-repo: git@gitee.com:hanziqi/hanziqi.git
-      # 部署 Gitee Pages
-      - name: Deploy Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          gitee-username: hanziqi
-          gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: hanziqi/hanziqi
           branch: gh-pages
+          folder: src/.vuepress/dist
