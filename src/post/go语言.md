@@ -5,9 +5,6 @@ tags:
 categories:
   - go
 date: 2022-12-02 16:43:59
-toc: right
-headerDepth: 3
-
 ---
 
 * 静态语言
