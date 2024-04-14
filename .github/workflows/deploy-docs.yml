@@ -1,5 +1,5 @@
 
-name: 部署文档
+name: GitHub Pages
 
 on:
   push:
@@ -10,7 +10,8 @@ permissions:
   contents: write
 
 jobs:
-  deploy-gh-pages:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -59,7 +60,7 @@ jobs:
 
 
   sync: #同步到gitee仓库
-    needs: deploy-gh-pages
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Sync to Gitee
