@@ -52,7 +52,7 @@ Gradle 会在三个阶段（phases）评估（evaluates）并执行（execute）
 
 **与 Apache Maven 术语的比较**
 
-Gradle 的“构建阶段”与 Maven 的“阶段”不同。Maven 的“阶段”将构建执行划分成了多个部分。它们的作用类似于 Gradle 的 task 图，尽管没有那么灵活。
+Gradle 的`构建阶段`与 Maven 的`阶段`不同。Maven 的`阶段`将构建执行划分成了多个部分。它们的作用类似于 Gradle 的 task 图，尽管没有那么灵活。
 
 Maven 的构建生命周期概念与 Gradle 的[生命周期 task](https://docs.gradle.org/current/userguide/base_plugin.html#sec:base_tasks) 大致相似。
 
@@ -83,7 +83,7 @@ Gradle 的构建脚本看起来像可执行代码，实际上它的确是。这�
 
 有一个普遍的误解，认为 Gradle 的强大和灵活来自于它的构建脚本是代码这一事实。这个观点完全错误。实际上那是底层模型和 API 提供的力量。正如我们在最佳实践中所建议的那样，你应该[避免在你的构建脚本中放入过多的命令式逻辑](https://docs.gradle.org/current/userguide/authoring_maintainable_build_scripts.html#sec:avoid_imperative_logic_in_scripts)。
 
-然而，有一个领域，“将构建脚本视为可执行代码”在此领域是很有用的，即：理解构建脚本的语法如何映射到 Gradle 的 API。API 文档（由 [Groovy DSL 参考](https://docs.gradle.org/current/dsl/)和 [Javadocs](https://docs.gradle.org/current/javadoc/) 组成）中列出了方法、属性并题及了闭包和动作。它们在构建脚本的上下文中有什么含义？请阅读 [Groovy 构建脚本入门](https://docs.gradle.org/current/userguide/groovy_build_script_primer.html#groovy_build_script_primer)来获得这个问题的答案。这能帮助你有效地使用 API 文档。
+然而，有一个领域，`将构建脚本视为可执行代码`在此领域是很有用的，即：理解构建脚本的语法如何映射到 Gradle 的 API。API 文档（由 [Groovy DSL 参考](https://docs.gradle.org/current/dsl/)和 [Javadocs](https://docs.gradle.org/current/javadoc/) 组成）中列出了方法、属性并题及了闭包和动作。它们在构建脚本的上下文中有什么含义？请阅读 [Groovy 构建脚本入门](https://docs.gradle.org/current/userguide/groovy_build_script_primer.html#groovy_build_script_primer)来获得这个问题的答案。这能帮助你有效地使用 API 文档。
 
 由于 Gradle 运行在 JVM 上，构建脚本也可以使用标准的 Java API。Groovy 构建脚本可以额外使用 Groovy API，而 Kotlin 构建脚本可以使用 Kotlin 的。
 
@@ -385,7 +385,7 @@ Gradle 考虑的最终配置是命令行上设置的所有 Gradle 属性和您�
 * gradle.user.home=(path to directory)： 指定gradle的用户目录
 * https.protocols：以逗号分隔格式指定支持的 TLS 版本。 例如：TLSv1.2、TLSv1.3。
 
-> 在多项目构建中，除根以外的任何项目中设置的systemProp属性都将被忽略。 也就是说，只会检查根项目的 gradle.properties 文件中以“systemProp”开头的属性。
+> 在多项目构建中，除根以外的任何项目中设置的systemProp属性都将被忽略。 也就是说，只会检查根项目的 gradle.properties 文件中以`systemProp`开头的属性。
 
 
 
@@ -414,7 +414,7 @@ systemProp.http.nonProxyHosts=*.nonproxyrepos.com|localhost
 ## 项目属性
 您可以通过 -P 命令行选项将属性直接添加到您的项目对象。
 
-Gradle 还可以在看到特殊命名的系统属性或环境变量时设置项目属性。 如果环境变量名称看起来像 ORG\_GRADLE\_PROJECT\_prop=somevalue，那么 Gradle 将在您的项目对象上设置一个 prop 属性，其值为 somevalue。 Gradle 也支持系统属性，但命名模式不同，类似于 org.gradle.project.prop。 以下两项都将您的 Project 对象上的 foo 属性设置为“bar”。
+Gradle 还可以在看到特殊命名的系统属性或环境变量时设置项目属性。 如果环境变量名称看起来像 ORG\_GRADLE\_PROJECT\_prop=somevalue，那么 Gradle 将在您的项目对象上设置一个 prop 属性，其值为 somevalue。 Gradle 也支持系统属性，但命名模式不同，类似于 org.gradle.project.prop。 以下两项都将您的 Project 对象上的 foo 属性设置为`bar`。
 
 > 如果引用了项目属性但不存在，则会引发异常并且构建将失败。使用 Project.hasProperty(java.lang.String) 方法检查是否存在。
 
