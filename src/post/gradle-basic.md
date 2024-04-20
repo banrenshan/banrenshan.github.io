@@ -8,6 +8,10 @@ categories:
 date: 2022-12-02 16:43:59
 ---
 
+
+
+
+
 # 核心概念 
 
 ## 1. Gradle 是一个通用的构建工具
@@ -22,6 +26,7 @@ task 是 Gradle 的工作单元。Gradle 的构建模型就是一个 task 的定
 
 这张图显示了两个 task 图的例子，一个是抽象的，一个是具体的，task 之间的依赖关系用箭头表示：
 
+![img](images/1622006881509-3e6a59d0-9116-47ed-b35b-78a2abcef2f7.png)
 
 几乎所有的构建过程都可以通过这种方式建模为一个 task 图，这也是 Gradle 灵活的原因之一。而且这个 task 图可以由插件和你的构建脚本来定义，并通过 [task 依赖机制](https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:task_dependencies)将 task 连接起来。
 
@@ -52,7 +57,7 @@ Gradle 会在三个阶段（phases）评估（evaluates）并执行（execute）
 
 **与 Apache Maven 术语的比较**
 
-Gradle 的`构建阶段`与 Maven 的`阶段`不同。Maven 的`阶段`将构建执行划分成了多个部分。它们的作用类似于 Gradle 的 task 图，尽管没有那么灵活。
+Gradle 的“构建阶段”与 Maven 的“阶段”不同。Maven 的“阶段”将构建执行划分成了多个部分。它们的作用类似于 Gradle 的 task 图，尽管没有那么灵活。
 
 Maven 的构建生命周期概念与 Gradle 的[生命周期 task](https://docs.gradle.org/current/userguide/base_plugin.html#sec:base_tasks) 大致相似。
 
@@ -83,7 +88,7 @@ Gradle 的构建脚本看起来像可执行代码，实际上它的确是。这�
 
 有一个普遍的误解，认为 Gradle 的强大和灵活来自于它的构建脚本是代码这一事实。这个观点完全错误。实际上那是底层模型和 API 提供的力量。正如我们在最佳实践中所建议的那样，你应该[避免在你的构建脚本中放入过多的命令式逻辑](https://docs.gradle.org/current/userguide/authoring_maintainable_build_scripts.html#sec:avoid_imperative_logic_in_scripts)。
 
-然而，有一个领域，`将构建脚本视为可执行代码`在此领域是很有用的，即：理解构建脚本的语法如何映射到 Gradle 的 API。API 文档（由 [Groovy DSL 参考](https://docs.gradle.org/current/dsl/)和 [Javadocs](https://docs.gradle.org/current/javadoc/) 组成）中列出了方法、属性并题及了闭包和动作。它们在构建脚本的上下文中有什么含义？请阅读 [Groovy 构建脚本入门](https://docs.gradle.org/current/userguide/groovy_build_script_primer.html#groovy_build_script_primer)来获得这个问题的答案。这能帮助你有效地使用 API 文档。
+然而，有一个领域，“将构建脚本视为可执行代码”在此领域是很有用的，即：理解构建脚本的语法如何映射到 Gradle 的 API。API 文档（由 [Groovy DSL 参考](https://docs.gradle.org/current/dsl/)和 [Javadocs](https://docs.gradle.org/current/javadoc/) 组成）中列出了方法、属性并题及了闭包和动作。它们在构建脚本的上下文中有什么含义？请阅读 [Groovy 构建脚本入门](https://docs.gradle.org/current/userguide/groovy_build_script_primer.html#groovy_build_script_primer)来获得这个问题的答案。这能帮助你有效地使用 API 文档。
 
 由于 Gradle 运行在 JVM 上，构建脚本也可以使用标准的 Java API。Groovy 构建脚本可以额外使用 Groovy API，而 Kotlin 构建脚本可以使用 Kotlin 的。
 
@@ -301,6 +306,7 @@ Gradle 使用两个主要目录来执行和管理其工作：[Gradle 用户主�
 ## [Gradle 用户主目录](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home)
 Gradle 用户主目录（默认情况下）用于存储全局配置属性和初始化脚本以及缓存和日志文件。其结构大致如下：`$USER_HOME/.gradle`
 
+![image-20221202165418305](images/image-20221202165418305.png)
 
 1. 全局缓存目录（用于非项目特定的所有内容）
 2. 特定于版本的缓存（例如，支持增量构建）
@@ -324,6 +330,7 @@ Gradle 用户主目录（默认情况下）用于存储全局配置属性和初�
 ## [项目根目录](https://docs.gradle.org/current/userguide/directory_layout.html#dir:project_root)
 项目根目录包含属于项目的所有源文件。此外，它还包含由 Gradle 生成的文件和目录，例如 `.gradle和build` 。虽然前者通常签入源代码管理，但后者是Gradle用于支持增量构建等功能的瞬态文件。总体而言，典型项目根目录的剖析大致如下：
 
+![image-20221202165624634](images/image-20221202165624634.png)
 
 1. 	由 Gradle 生成的特定于项目的缓存目录
 2. 特定于版本的缓存（例如，支持增量构建）
@@ -385,7 +392,7 @@ Gradle 考虑的最终配置是命令行上设置的所有 Gradle 属性和您�
 * gradle.user.home=(path to directory)： 指定gradle的用户目录
 * https.protocols：以逗号分隔格式指定支持的 TLS 版本。 例如：TLSv1.2、TLSv1.3。
 
-> 在多项目构建中，除根以外的任何项目中设置的systemProp属性都将被忽略。 也就是说，只会检查根项目的 gradle.properties 文件中以`systemProp`开头的属性。
+> 在多项目构建中，除根以外的任何项目中设置的systemProp属性都将被忽略。 也就是说，只会检查根项目的 gradle.properties 文件中以“systemProp”开头的属性。
 
 
 
@@ -414,7 +421,7 @@ systemProp.http.nonProxyHosts=*.nonproxyrepos.com|localhost
 ## 项目属性
 您可以通过 -P 命令行选项将属性直接添加到您的项目对象。
 
-Gradle 还可以在看到特殊命名的系统属性或环境变量时设置项目属性。 如果环境变量名称看起来像 ORG\_GRADLE\_PROJECT\_prop=somevalue，那么 Gradle 将在您的项目对象上设置一个 prop 属性，其值为 somevalue。 Gradle 也支持系统属性，但命名模式不同，类似于 org.gradle.project.prop。 以下两项都将您的 Project 对象上的 foo 属性设置为`bar`。
+Gradle 还可以在看到特殊命名的系统属性或环境变量时设置项目属性。 如果环境变量名称看起来像 ORG\_GRADLE\_PROJECT\_prop=somevalue，那么 Gradle 将在您的项目对象上设置一个 prop 属性，其值为 somevalue。 Gradle 也支持系统属性，但命名模式不同，类似于 org.gradle.project.prop。 以下两项都将您的 Project 对象上的 foo 属性设置为“bar”。
 
 > 如果引用了项目属性但不存在，则会引发异常并且构建将失败。使用 Project.hasProperty(java.lang.String) 方法检查是否存在。
 
@@ -447,6 +454,7 @@ tasks.register('performRelease') {
 
 # 依赖管理
 
+![dependency management resolution](images/dependency-management-resolution.png)
 
 就拿java项目来举例。可能需要导入Guava类库，这是一个提供丰富实用函数的开源库。除了Guava，该项目还需要JUnit库来编译和执行测试代码。
 
@@ -461,6 +469,8 @@ Guava和JUnit代表了这个项目的依赖关系。开发人员可以在构建�
 模块可以提供额外的元数据。元数据是更详细地描述模块的数据，例如在存储库中查找模块的坐标、项目信息或其作者。作为元数据的一部分，模块可以定义需要其他模块才能正常工作。例如，JUnit5平台模块还需要平台公共模块。Gradle自动解析这些附加模块，称为传递依赖关系。如果需要，您可以根据项目的需求定制行为和传递依赖关系的处理。
 
 具有数十个或数百个已声明依赖项的项目很容易受到依赖地狱的困扰。Gradle提供了足够的工具，可以通过构建扫描或内置任务来可视化、导航和分析项目的依赖关系图。
+
+![gradle core test build scan dependencies](images/gradle-core-test-build-scan-dependencies.png)
 
 ## 存储库管理
 
