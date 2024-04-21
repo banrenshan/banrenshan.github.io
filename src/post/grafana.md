@@ -136,7 +136,7 @@ No data and execution errors or timeouts
 {{ if $values.B }}{{ $labels.instance }} has a 95th percentile request latency above 1s: {{ $values.B }}){{ end }}
 ```
 
-如果规则使用经典条件而不是reduce和数学表达式，则$values包含refID和条件位置的组合。例如，{{ $values.A0 }} and {{ $values.A1 }}。
+如果规则使用经典条件而不是reduce和数学表达式，则$values包含refID和条件位置的组合。例如，`{{ $values.A0 }} and {{ $values.A1 }}`。
  展开注释和标签时，以下模板变量可用:
 
 | **Name** | **Description**                                              |

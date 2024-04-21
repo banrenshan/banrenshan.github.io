@@ -1,9 +1,11 @@
 ---
-title: flyway
+title: flyway指南
 tags:
   - java
+  - flyway
 categories:
-  - 技术
+  - 数据库
+  - java
 date: 2022-12-02 13:01:55
 ---
 
@@ -60,27 +62,21 @@ spring:
 
 5. 启动项目。启动成功后，在数据库中可以看到已按照定义好的脚本，完成数据库变更，并在`flyway_schema_history`表插入了sql执行记录：
 
-
-
 ## 主要配置项
-* flyway.baseline-on-migrate： 当迁移时发现目标schema非空，而且带有没有元数据的表时，是否自动执行基准迁移（创建元数据表，然后执行sql脚本），默认false.
+* `flyway.baseline-on-migrate`： 当迁移时发现目标schema非空，而且带有没有元数据的表时，是否自动执行基准迁移（创建元数据表，然后执行sql脚本），默认false.
 * flyway.baseline-version开始执行基准迁移时对现有的schema的版本打标签，默认值为1.
 
-
-
-* flyway.validate-on-migrate迁移时是否校验，默认为true. 校验机制检查本地迁移是否仍与数据库中已执行的迁移具有相同的校验和。主要防止已迁移的本地文件发生了变动，数据库却没有更新这种变化。这是一种预警机制。
-* flyway.clean-on-validation-error当发现校验错误时是否自动调用clean，这是开发环境中的方便机制。默认false.  警告！ 不要在生产中启用！
-* flyway.ignore-failed-future-migration当读取元数据表时是否忽略错误的迁移，默认false.
+* `flyway.validate-on-migrate`迁移时是否校验，默认为true. 校验机制检查本地迁移是否仍与数据库中已执行的迁移具有相同的校验和。主要防止已迁移的本地文件发生了变动，数据库却没有更新这种变化。这是一种预警机制。
+* `flyway.clean-on-validation-error`当发现校验错误时是否自动调用clean，这是开发环境中的方便机制。默认false.  警告！ 不要在生产中启用！
+* `flyway.ignore-failed-future-migration`当读取元数据表时是否忽略错误的迁移，默认false.
 * flyway.out-of-order是否允许无序的迁移，默认false.
 
-
-
-* flyway.enabled是否开启flywary，默认true.
-* flyway.password：目标数据库的密码.
-* flyway.url：迁移时使用的JDBC URL，如果没有指定的话，将使用配置的主数据源
-* flyway.user：迁移数据库的用户名
-* flyway.schemas设定需要flywary迁移的schema，大小写敏感，默认为连接默认的schema.
-* flyway.tableflyway使用的元数据表名，默认为schema\_version
+* `flyway.enabled`是否开启flywary，默认true.
+* `flyway.password`：目标数据库的密码.
+* `flyway.url`：迁移时使用的JDBC URL，如果没有指定的话，将使用配置的主数据源
+* `flyway.user`：迁移数据库的用户名
+* `flyway.schemas`设定需要flywary迁移的schema，大小写敏感，默认为连接默认的schema.
+* `flyway.tableflyway`使用的元数据表名，默认为schema\_version
 
 
 * flyway.placeholder-prefix设置每个placeholder的前缀，默认\${.
@@ -88,14 +84,12 @@ spring:
 * flyway.placeholder-replacementplaceholders是否要被替换，默认true.
 * flyway.placeholders.\[placeholder name\]设置placeholder的value
 
-
-
-* flyway.sql-migration-prefix迁移文件的前缀，默认为V.
-* flyway.sql-migration-separator迁移脚本的文件名分隔符，默认`__`
-* flyway.sql-migration-suffix迁移脚本的后缀，默认为.sql
-* flyway.init-sqls当初始化好连接时要执行的SQL.
-* flyway.locations迁移脚本的位置，默认db/migration.
-* flyway.encoding设置迁移时的编码，默认UTF-8.
+* `flyway.sql-migration-prefix`迁移文件的前缀，默认为V.
+* `flyway.sql-migration-separator`迁移脚本的文件名分隔符，默认`__`
+* `flyway.sql-migration-suffix`迁移脚本的后缀，默认为.sql
+* `flyway.init-sqls`当初始化好连接时要执行的SQL.
+* `flyway.locations`迁移脚本的位置，默认db/migration.
+* `flyway.encoding`设置迁移时的编码，默认UTF-8.
 
 
 
