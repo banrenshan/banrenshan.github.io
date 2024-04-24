@@ -19,9 +19,9 @@ projects:
     link: https://链接地址
 
   - icon: book
-    name: 数据库
-    desc: 书籍详细描述
-    link: https://你的书籍链接
+    name: Go
+    desc: Go自学笔记
+    link: Go/
 
 footer: 心之所向，素履以往
 ---
