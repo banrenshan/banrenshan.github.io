@@ -291,6 +291,33 @@ junit.jupiter.execution.parallel.enabled=true
 
 默认情况下，测试树中的节点使用`SAME_THREAD`执行模式。您可以通过设置`junit.jupiter.execution.parallel.mode.default`参数来更改默认值。或者，您可以使用`@Execution`注释来更改带注释的元素及其子元素（如果有的话）的执行模式，这允许您逐个激活单个测试类的并行执行。
 
+```properties
+junit.jupiter.execution.parallel.enabled = true
+junit.jupiter.execution.parallel.mode.default = concurrent
+```
+
+采用以上的模式，所有的测试类和测试方法都是并发来执行的。当然还可以通过另外一个配置来保证类是并行测试而内部方法是串行测试的：
+
+```properties
+junit.jupiter.execution.parallel.enabled = true
+junit.jupiter.execution.parallel.mode.default = same_thread
+junit.jupiter.execution.parallel.mode.classes.default = concurrent
+```
+
+设置类之间串行而内部方法是并行的:
+
+```properties
+junit.jupiter.execution.parallel.enabled = true
+junit.jupiter.execution.parallel.mode.default = concurrent
+junit.jupiter.execution.parallel.mode.classes.default = same_thread
+```
+
+以上两个配置并行和串行的参数对应的四种情况如下所示：
+
+![image-20240424090352593](images/image-20240424090352593.png)
+
+### 示例
+
 ```java
 @ExtendWith(MockitoExtension.class)
 public class MocktioDemoTest7 {
@@ -322,14 +349,9 @@ FirstParallelUnitTest second() end => ForkJoinPool-1-worker-2
 >
 > ```
 > junit.jupiter.execution.parallel.config.fixed.parallelism  # 固定线程数
+> junit.jupiter.execution.parallel.config.strategy=fixed # 线程池配置策略
 > junit.jupiter.execution.parallel.config.dynamic.factor #根据核心数动态确定线程数 线程数=核心数*factor(default=1)
 > ```
 
-有些时候，我们并不想完全并行化，只想类内串行，类之间并行，可以设置：
 
-```
-junit.jupiter.execution.parallel.mode.classes.default = concurrent
-```
-
-在理想情况下，我们所有的单元测试都是独立和隔离的。然而，有时这很难实现，因为它们依赖于共享资源。那么，当并行运行测试时，我们需要在测试中对公共资源进行同步。JUnit5以*`@ResourceLock`*注解的形式为我们提供了这种机制
 
