@@ -7,6 +7,37 @@ tags:
   - oracle
 ---
 
+## docker 安装Oracle
+
+1. 安装
+
+   ```
+   # 下载镜像
+   docker pull oracleinanutshell/oracle-xe-11g
+   
+   # 启动容器
+   docker run -d -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true oracleinanutshell/oracle-xe-11g
+   ```
+
+2. 初始密码
+
+   ```
+   hostname: localhost
+   port: 49161
+   sid: xe
+   username: system
+   password: oracle
+   ```
+
+3. 设置用户密码
+
+   ```
+   create user zzq identified by 1234;
+   GRANT CREATE SESSION TO zzq;
+   grant connect,resource,dba to zzq;
+   ```
+
+   
 
 
 ## 数据类型
@@ -152,7 +183,7 @@ FROM
 
 下图说明了T1和T2表的UNION运算图示：
 
-<img src="images/image-20240421175643962.png" alt="image-20240421175643962" style="zoom:80%;" />
+![image-20240421175735249](images/image-20240421175643962.png)
 
 UNION运算符删除(消除)重复的行 - 2和3
 
