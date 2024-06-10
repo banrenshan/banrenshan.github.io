@@ -1,3 +1,14 @@
+---
+title: OpenRewrite
+date: 2024-06-10
+categories:
+  - OpenRewrite
+tags:
+  - OpenRewrite
+---
+
+
+
 # 概述
 
 [OpenRewrite](https://docs.openrewrite.org/) 是 Java 和其他源代码的重构生态系统。有时，我们需要将依赖关系升级到最新版本、应用安全补丁、取消使用已废弃的 API、从一种技术迁移到另一种技术（例如，[JUnit asserts 到 AssertJ](https://docs.openrewrite.org/recipes/java/testing/assertj/junittoassertj)），等等。我们可以使用 OpenRewrite 库来应对这些挑战.。
