@@ -7,7 +7,4 @@ export default defineUserConfig({
   title: "心之所向，素履以往",
   description: "心之所向，素履以往",
   theme,
-
-  // 和 PWA 一起启用
-  // shouldPrefetch: false,
 });
