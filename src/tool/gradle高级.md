@@ -322,5 +322,17 @@ tree.visit {element ->
 }
 ```
 
+# Task
+
+当task 没有设置 group 且没有其他 task 依赖它时, 执行 tasks 命令不会被显示. 这样得task 被称为 hidden task 或 private task. 尽管没有被列出, 但仍然可以被 显式执行.
+
+
+
+注册 task , 使用register 方法
+
+配置task: 配置已注册task的输入和输出, 使用named方法
+
+实现task: 自定义task, 通常通过实现DefaultTask类来定义task
+
 
 
