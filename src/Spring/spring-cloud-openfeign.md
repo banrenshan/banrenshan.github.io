@@ -157,7 +157,7 @@ Spring Cloud OpenFeign 默认情况下不为feign提供以下bean，但仍然从
 * Retryer
 * ErrorDecoder
 * Request.Options
-* Collection<RequestInterceptor>
+* `Collection<RequestInterceptor>`
 * SetterFactory
 * QueryMapEncoder
 * Capability (MicrometerCapability and CachingCapability are provided by default)
