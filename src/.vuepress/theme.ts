@@ -28,6 +28,7 @@ export default hopeTheme({
   },
   plugins: {
     blog: true,
+    search: true,
     catalog: {
       level: 3
     },
